@@ -88,7 +88,34 @@ $\bm{s_4} + \bm{s_2} + \bm{s_1} + \bm{s_3} = \bm{bbbabbc}$
 Find an approximate solution of the superstring for $\bm{S}$
 by applying "Greedy set cover algorithm".
 \subsubsection{回答}
+\[
+  \bm{s_1} = \bm{abb}, \bm{s_2} = \bm{bba}, \bm{s_3} = \bm{bbc}, \bm{s_4} = \bm{bbb}
+\]
+とおく。
 
+まず、
+$\bm{T} = \bm{S}$とする。
+
+$|\bm{T}| \geq 2$の間、$\bm{T}$からOverlapが一番大きくなるような2つ要素を取り出し、Overlapしている部分をくっつけて１つの要素とし、それをTの要素とする、ということを繰り返す。
+
+$|\bm{T}| = |\{ \bm{s_1} = \bm{abb}, \bm{s_2} = \bm{bba}, \bm{s_3} = \bm{bbc}, \bm{s_4} = \bm{bbb} \}| = 4 \geq 2$である。
+$\bm{T}$の中で最大のOverlapを持つものの組み合わせの１つは、
+$\bm{s_1} + \bm{s_2}$である。
+$\bm{T}$から$\bm{s_1}, \bm{s_2}$を除き、$\bm{s_1} + \bm{s_2} = \bm{abba}$を加える。
+
+$|\bm{T}| = |\{\bm{s_1} + \bm{s_2} = \bm{abba}, \bm{s_3} = \bm{bbc}, \bm{s_4} = \bm{bbb}\}| = 3 \geq 2$である。
+$\bm{T}$の中で最大のOverlapを持つものの組み合わせの１つは、
+$\bm{s_4} + \bm{s_3}$である。
+$\bm{T}$から$\bm{s_4}, \bm{s_3}$を除き、$\bm{s_4} + \bm{s_3} = \bm{bbbc}$を加える。
+
+$|\bm{T}| = |\{\bm{s_1} + \bm{s_2} = \bm{abba}, \bm{s_4} + \bm{s_3} = \bm{bbbc}\}| = 2 \geq 2$である。
+$\bm{T}$の中で最大のOverlapを持つものの組み合わせの１つは、
+$\left(\bm{s_1} + \bm{s_2}\right) + \left(\bm{s_4} + \bm{s_3}\right)$である。
+$\bm{T}$から$\bm{s_1} + \bm{s_2}, \bm{s_4} + \bm{s_3}$を除き、$\left(\bm{s_1} + \bm{s_2}\right) + \left(\bm{s_4} + \bm{s_3}\right) = \bm{abbabbbc}$を加える。
+
+$|\bm{T}| = |\left(\bm{s_1} + \bm{s_2}\right) + \left(\bm{s_4} + \bm{s_3}\right) = \bm{abbabbbc}| = 1 < 2$となったので、結果として$\bm{T} = \bm{abbabbbc}$を出力する。
+
+よって、Greedy set cover algorithmによって得られたsuperstringはabbabbbcで8文字である。
 % 画像
 % \begin{figure}[htbp]
 %   \centering
